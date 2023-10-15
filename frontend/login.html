@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=FontName&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="stylesheet" href="./Style/login.css">
+    <link rel="stylesheet" href="./Style/index.css">
+    <title>Registration form</title>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="./image/logo.png" alt="Logo">
+        </div>
+        <div class="menu">
+            <a href="#">Men</a>
+            <a href="#">Women</a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search..." />
+        </div>
+        <div class="icons">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-shopping-cart"></i>
+            <i class="fas fa-user"></i>
+        </div>
+    </nav>
+    <div class="form-container">
+        <div class="form-page active" id="signupForm">
+            <h2>Sign Up</h2>
+            <form id="signupForm">
+
+                <label for="signupUsername">Username:</label>
+                <input type="text" id="signupUsername" class="input-field" required><br>
+
+                <label for="signupEmail">Email:</label>
+                <input type="email" id="signupEmail" class="input-field" required><br>
+
+                <label for="signupPassword">Password:</label>
+                <input type="password" id="signupPassword" class="input-field" required><br>
+
+                <span>If you are Customer or user no need to Select role</span><br>
+                <span id="signupRole">Role:</span>
+                <select name="role" id="role">
+                    <option value="">---Select---</option>
+                    <option value="admin">Admin</option>
+                    <option value="customer">Customer</option>
+                </select>
+                <br>
+                <button type="button" class="toggle-button" onclick="toggleForm('loginForm')">Switch to Login</button>
+
+                <button type="submit" class="submit-button">Sign Up</button>
+            </form>
+        </div>
+
+        <div class="form-page" id="loginForm">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="loginUsername">Email:</label>
+                <input type="text" id="loginEmail" class="input-field" required><br>
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" class="input-field" required><br>
+
+                <span>If you are Customer or user no need to Select role</span><br>
+                <span id="signupRole">Role:</span>
+                <select name="role" id="role">
+                    <option value="">---Select---</option>
+                    <option value="admin">Admin</option>
+                    <option value="customer">Customer</option>
+                </select><br>
+                <span id="span">Don't have Account click Sign-Up</span><br>
+                <button type="button" class="toggle-button" onclick="toggleForm('signupForm')">Switch to Sign
+                    Up</button>
+                <button type="submit" class="submit-button">Login</button>
+
+
+            </form>
+        </div>
+    </div>
+    </body>
+    <script src="./script/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+</html>

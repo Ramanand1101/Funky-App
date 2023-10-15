@@ -1,0 +1,208 @@
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width:90%;
+    height: auto;
+    margin: auto;
+    margin-top: 10px;
+    border: 1px solid black;
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px; 
+}
+
+.filters-container {
+    /* 30% width with a gap of 20px */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+}
+
+.products-container {
+    width:80%;
+    margin: auto;
+    height: auto; /* 70% width with a gap of 20px */
+    border: 1px solid black;
+    gap: 20px;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.uppercase {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.product-card {
+    width: 90%;
+    margin: auto;
+    height:100%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    border-radius: 10px;
+    gap:20px;
+    text-align: center;
+    padding: 20px;
+}
+.products{
+    width: 90%;
+    margin: auto;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.products:hover{
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    transform: translate(0px,-20px);
+}
+
+
+
+h2, h4 {
+    margin-bottom: 10px;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width:90%;
+    height: auto;
+    margin: auto;
+    margin-top: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+    
+}
+
+.filters-container {
+    /* 30% width with a gap of 20px */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+}
+
+.products-container {
+    width:80%;
+    margin: auto;
+    height: auto; /* 70% width with a gap of 20px */
+    gap: 20px;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.uppercase {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+
+.product-card {
+    width: 90%;
+    margin: auto;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    border-radius: 10px;
+    gap:20px;
+    text-align: center;
+    padding: 20px;
+}
+
+
+.p-image {
+    width:200px;
+    height:200px;
+    display: block;
+   margin: 0 auto;
+}
+
+h2, h4 {
+    margin-bottom: 10px;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: auto;
+    align-self: flex-start;
+    font-size: 16px;
+    cursor:pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: red;
+}
+
+/* Make the layout responsive */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .filters-container,
+    .products-container {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .filters-container {
+        margin-bottom: 20px;
+    }
+}
+
+/* Make the layout responsive */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .filters-container,
+    .products-container {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .filters-container {
+        margin-bottom: 20px;
+    }
+}

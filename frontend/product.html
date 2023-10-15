@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product App</title>
+    <link rel="stylesheet" href="./Style/product.css">
+     <link rel="stylesheet" href="./Style/index.css" />
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=FontName&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="./image/logo.png" alt="Logo">
+        </div>
+        <div class="menu">
+            <a href="#">Men</a>
+            <a href="#">Women</a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search..." />
+        </div>
+        <div class="icons">
+            <i class="fas fa-heart"></i>
+            <i id="cart-icon" class="fas fa-shopping-cart"></i>
+            <i class="fas fa-user"></i>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="filters">
+            <!-- Filter and Sort Options Here (e.g., dropdowns, checkboxes) -->
+            <label class="uppercase">Filter by Category:</label>
+            <select id="categoryFilter">
+                <option value="all">All</option>
+                <option value="jeans">Jeans</option>
+                <option value="shirt">Shirt</option>
+                <option value="t-shirt">T-Shirt</option>
+                <option value="sweater">Sweater</option>
+                <option value="other">Other</option>
+            </select>
+            <br>
+
+            <label class="uppercase">Sort by Price:</label>
+            <select id="priceSort">
+                <option value="asc">Low to High</option>
+                <option value="desc">High to Low</option>
+            </select>
+        </div>
+
+        <div class="products-container" id="productsContainer">
+            <div class="product-card">
+                
+            </div>
+            <!-- Product Cards will be dynamically added here -->
+        </div>
+    </div>
+    <script src="./script/product.js"></script>
+<script src="https://kit.fontawesome.com/a0a226fd5d.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</body>
+
+</html>
