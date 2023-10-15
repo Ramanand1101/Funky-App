@@ -24,10 +24,11 @@ body {
 .filters-container {
     /* 30% width with a gap of 20px */
     padding: 20px;
+    
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
 }
-
+/* container of product given here */
 .products-container {
     width:80%;
     margin: auto;
