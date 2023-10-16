@@ -178,7 +178,6 @@ function getCards(data) {
     let btn = document.createElement("button");
     btn.innerText = "Add To Cart";
     btn.addEventListener("click", () => {
-      console.log("dddd")
       addToCart(elem._id);
        // Assuming elem._id represents the product ID
     });
@@ -189,43 +188,51 @@ function getCards(data) {
 }
 
 // Function to add product to the cart
-function addToCart(productId) {
-  fetch(`${url}/cart/add`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: JSON.parse(localStorage.getItem("token")),
-    },
-    body: JSON.stringify({ productId, quantity: 1 }),
-  })
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error("Network response was not ok");
+async function addToCart(productId, quantity = 1) {
+  try {
+      const response = await fetch(`${url}/cart/add`, {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              Authorization: JSON.parse(localStorage.getItem("token")),
+          },
+          body: JSON.stringify({ productId, quantity }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+          if (data.message === "Product already in the cart") {
+              Swal.fire({
+                  title: 'Error!',
+                  text: 'This product is already in your cart.',
+                  icon: 'error'
+              });
+          } else {
+              Swal.fire({
+                  title: 'Success!',
+                  text: 'Item has been added to your cart successfully!',
+                  icon: 'success'
+              });
+          }
+      } else {
+          Swal.fire({
+              title: 'Error!',
+              text: data.error || 'An error occurred while processing your request.',
+              icon: 'error'
+          });
       }
-      return res.json();
-    })
-    .then((data) => {
-      // Show success message with SweetAlert
-      
+  } catch (error) {
+      console.error('Error:', error);
       Swal.fire({
-        icon: "success",
-        title: "Item added to cart!",
-        text: data.message, // Message from the server
+          title: 'Error!',
+          text: 'An error occurred while processing your request.',
+          icon: 'error'
       });
-      
-      localStorage.setItem("productId",JSON.stringify(productId))
-      // Optionally, update the cart UI or provide user feedback
-    })
-    .catch((error) => {
-      // Show error message with SweetAlert
-      Swal.fire({
-        icon: "error",
-        title: "Error adding item to cart!",
-        text: error.message, // Error message from the catch block
-      });
-      console.error("Error adding item to cart:", error);
-    });
+  }
 }
+
+
 
 
 // Event listener for category filter change
