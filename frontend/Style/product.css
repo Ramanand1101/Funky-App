@@ -14,7 +14,7 @@ body {
     height: auto;
     margin: auto;
     margin-top: 10px;
-    border: 1px solid black;
+   
     padding: 20px;
     display: flex;
     justify-content: space-evenly;
@@ -33,7 +33,7 @@ body {
     width:80%;
     margin: auto;
     height: auto; /* 70% width with a gap of 20px */
-    border: 1px solid black;
+    
     gap: 20px;
 }
 
@@ -103,12 +103,6 @@ body {
     
 }
 
-.filters-container {
-    /* 30% width with a gap of 20px */
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-}
 
 .products-container {
     width:80%;
@@ -117,14 +111,50 @@ body {
     gap: 20px;
 }
 
-.filter-section {
-    margin-bottom: 20px;
+
+.filters{
+    margin-top: 30px;
 }
+
 
 .uppercase {
     text-transform: uppercase;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin: 10px;
+    
+}
+.uppercase{
+    margin-top:30px ;
+    font-size: 20px;
+}
+#categoryFilter {
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    font-size: 1rem;
+    box-shadow: rgba(100, 100, 111, 0.2);
+ 
+}
+
+#categoryFilter option {
+    font-size: 16px; /* Increase the font size of the options */
+    padding: 10px; /* Increase the padding inside each option */
+}
+
+#priceSort {
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    
+    box-shadow: rgba(100, 100, 111, 0.2);
+   /* This includes padding and border in the element's total width and height */
+}
+
+#priceSort option {
+    font-size: 16px; /* Increase the font size of the options */
+    padding: 10px; /* Increase the padding inside each option */
 }
 
 
