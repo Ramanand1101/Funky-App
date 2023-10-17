@@ -46,6 +46,7 @@ document.getElementById('signupForm').addEventListener('submit', async (event) =
 
     try {
         // Check for duplicate email and username
+       
         const duplicateCheckResponse = await fetch(`${url}/user/register`, {
             method: 'POST',
             headers: {
@@ -118,7 +119,6 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
                 showConfirmButton: false,
                 timer: 1500 // Automatically close the alert after 1.5 seconds
             })
-          
             localStorage.setItem("token",JSON.stringify(data.accessToken))
               // Store tokens in cookies
             document.cookie = `access_token=${data.accessToken}; max-age=${15 * 60}`; // 15 minutes

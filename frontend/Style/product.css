@@ -81,11 +81,7 @@ h2, h4 {
 }
 
 /* Reset some default styles */
-body, h1, h2, h3, p, ul, li {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+
 
 body {
     font-family: Arial, sans-serif;
@@ -122,6 +118,9 @@ body {
     font-weight: bold;
     margin: 10px;
     
+}
+.cartCount{
+    margin-left:5px;
 }
 .uppercase{
     margin-top:30px ;
@@ -165,9 +164,15 @@ body {
     display: grid;
     grid-template-columns: repeat(3,1fr);
     border-radius: 10px;
+
     gap:20px;
     text-align: center;
     padding: 20px;
+}
+.product-card>div{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 

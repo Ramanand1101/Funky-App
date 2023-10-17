@@ -1,96 +1,131 @@
-/* const cartList = document.getElementById("cartList");
-const totalQuantity = document.getElementById("totalQuantity");
-const totalAmount = document.getElementById("totalAmount");
+//Retrieve cart data from localStorage or set defaults
+let cartProducts = document.querySelector(".cart-data");
+let totalQuantityElement = document.getElementById("totalQuantity");
+let totalAmountElement = document.getElementById("totalAmount");
+let cartShow = document.querySelector(".cartCount");
+let cartCount = parseInt(localStorage.getItem("cart-count")) || 0;
+let cart = JSON.parse(localStorage.getItem("cart-products")) || [];
+let payment=document.getElementById("payment")
+document.addEventListener("DOMContentLoaded", function() {
+    payment.addEventListener("click", (e) => {
+        if (totalQuantityElement.innerText == 0) {
+            swal.fire("Oops!", "Your cart is empty", "error");
+        } else {
+            swal.fire("Success!", "Redirecting to payment page...", "success");
+            setTimeout(() => {
+                window.location.href = "./payment.html";
+            }, 3000); // Redirect after 3 seconds
+        }
+    });
+});
 
-// Sample cart data
-const cartProducts = [
-  { id: 1, name: "Product 1", price: 10.99, quantity: 2 },
-  { id: 2, name: "Product 2", price: 19.99, quantity: 1 },
-  // Add more products as needed
-];
 
-// Function to render cart products
-function renderCartProducts() {
-  cartList.innerHTML = "";
-  let quantity = 0;
-  let amount = 0;
+function displayData(data) {
+    cartProducts.innerHTML = "";
 
-  cartProducts.forEach(product => {
-    const listItem = document.createElement("li");
-    listItem.innerText = `${product.name} - Quantity: ${product.quantity} - Price: $${product.price.toFixed(2)}`;
-    cartList.appendChild(listItem);
+    let totalQuant = 0;
+    let totalCost = 0;
 
-    quantity += product.quantity;
-    amount += product.price * product.quantity;
-  });
+    data.forEach((elem, ind) => {
+        const div = document.createElement("div");
+        div.classList.add("cartProducts");
 
-  totalQuantity.innerText = quantity;
-  totalAmount.innerText = amount.toFixed(2);
+        let image = document.createElement("img");
+        image.setAttribute("src", elem.image);
+        image.setAttribute("class", "p-image");
+
+        let name = document.createElement("h2");
+        name.innerText = elem.name;
+
+        let desc = document.createElement("p");
+        desc.innerText = elem.description;
+
+        let cat = document.createElement("p");
+        cat.innerText = elem.category;
+
+        let price = document.createElement("h4");
+        price.innerText = price.innerText=`Price: ₹ ${elem.price}`;
+
+        let rating = document.createElement("h4");
+        rating.innerText = elem.rating;
+
+        let size = document.createElement("p");
+        size.innerText = elem.size;
+
+        let quantityDiv = document.createElement("div");
+        quantityDiv.classList.add("quantity-div");
+
+        let addButton = document.createElement("button");
+        addButton.innerText = "+";
+        addButton.addEventListener("click", (e) => {
+            e.preventDefault()
+            // Increase the quantity when the + button is clicked
+            elem.quantity = (elem.quantity || 0) + 1;
+            quantityDisplay.innerText = elem.quantity;
+            updateCart();
+        });
+
+        let quantityDisplay = document.createElement("span");
+        quantityDisplay.innerText = elem.quantity || 1;
+
+        let minusButton = document.createElement("button");
+        minusButton.innerText = "-";
+        minusButton.addEventListener("click", (e) => {
+            e.preventDefault()
+            
+            // Decrease the quantity, but not below 1
+            elem.quantity = Math.max((elem.quantity || 1) - 1, 1);
+            quantityDisplay.innerText = elem.quantity;
+            updateCart();
+        });
+        let btn=document.createElement("button");
+        btn.innerText="Delete";
+        btn.setAttribute("class","btn");
+        btn.addEventListener("click", function(e) {
+            e.preventDefault();
+            const deletedQuantity = elem.quantity || 1;
+            cart.splice(ind, 1);
+            
+            localStorage.setItem("cart-products", JSON.stringify(cart));
+            displayData(cart);
+            updateCart(deletedQuantity); // Pass the deleted quantity to updateCart function
+        });
+        quantityDiv.append(minusButton, quantityDisplay, addButton);
+
+        div.append(image, name, desc, price, rating, size, quantityDiv, btn);
+        cartProducts.appendChild(div);
+
+        totalQuant += elem.quantity || 1; // Add the quantity of the current product to totalQuant
+        totalCost += (elem.quantity || 1) * elem.price; // Add the cost of the current product to totalCost
+    });
+
+    totalQuantityElement.innerText = totalQuant;
+    totalAmountElement.innerText = totalCost.toFixed(2);
+
+    cartCount = totalQuant;
+    cartShow.innerText = cartCount;
 }
 
-// Initial render
-renderCartProducts(); */
-// Retrieve userId from localStorage (or wherever it's stored during login)
-const url = "http://localhost:3000";
-const userId = JSON.parse(localStorage.getItem("productId"));
-const cartContainer = document.querySelector(".cart-data");
+function updateCart() {
+    let totalQuant = 0;
+    let totalCost = 0;
 
-function fetchCartData() {
-  if (!userId) {
-    console.error("User ID not found.");
-    // Handle the case when the user is not logged in or user ID is missing
-    return;
-  }
+    cart.forEach(product => {
+        totalQuant += product.quantity || 1;
+        totalCost += (product.quantity || 1) * product.price;
+    });
 
-  fetch(`${url}/cart?productId=${userId}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: JSON.parse(localStorage.getItem("token")),
-    },
-  })
-    .then((res) => {
-        console.log(res)
-      if (!res.ok) {
-        throw new Error("Network response was not ok");
-      }
-    //   return res.json();
-    return res.json()
-      console.log(res.json())
-    })
-    .then((acctualdata) => {
-      // Handle the cart data received from the server
-      console.log(data)
-      getCartData(acctualdata);
-    })
-    .catch((error) => {
-      console.error("Error fetching cart data:", error);
-      // Handle errors, show error messages, update UI accordingly, etc.
+    totalQuantityElement.innerText = totalQuant;
+    totalAmountElement.innerText = totalCost.toFixed(2);
+
+    cartCount = totalQuant;
+    cartShow.innerText = cartCount;
+
+    localStorage.setItem("cart-count", totalQuant);
+    localStorage.setItem("cart-products", JSON.stringify(cart));
+    quantityDisplays.forEach((quantityDisplay, index) => {
+        quantityDisplay.innerText = cart[index].quantity || 1;
     });
 }
 
-function getCartData(data) {
-    cartContainer.innerHTML = "";
-      data.forEach((elem) => {
-        // Create cart item elements and append them to the cart container
-        const div = document.createElement("div");
-        div.classList.add("product");
-  
-        let image = document.createElement("img");
-        image.setAttribute("src", elem.image);
-        image.setAttribute("class", "product-image");
-  
-        let name = document.createElement("p");
-        name.innerText = elem.name;
-  
-        let desc = document.createElement("p");
-        desc.innerText = elem.description;
-  
-        let price = document.createElement("p");
-        price.innerText = `Price: $${elem.price}`;
-  
-        div.append(image, name, desc, price);
-        cartContainer.appendChild(div);
-      });
-    }
-    fetchCartData()
+displayData(cart);
