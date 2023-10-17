@@ -4,21 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./Style/cart.css">
+  
+  <link rel="stylesheet" href="./Style/index.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=FontName&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <title>Cart</title>
 </head>
 <body>
-  <div class="cart-summary">
-    <h2>Cart Summary</h2>
-    <p>Total Quantity: <span id="totalQuantity">0</span></p>
-    <p>Total Amount: $<span id="totalAmount">0.00</span></p>
-  </div>
+  <nav class="navbar">
+    <div class="logo">
+        <img src="./image/logo.png" alt="Logo">
+    </div>
+    <div class="menu">
+        <a href="#">Men</a>
+        <a href="#">Women</a>
+    </div>
+    <div class="search-bar">
+        <input type="text" placeholder="Search..." />
+    </div>
+    <div class="icons">
+        <i class="fas fa-heart"></i>
+       
+        <i id="cart-icon" class="fas fa-shopping-cart"><span class="cartCount">0</span></i>
+        
+        <i class="fas fa-user"></i>
+    </div>
+</nav>
+<div id="cart">
+ 
 
   <div class="cart-products">
     <div class="cart-data">
         
     </div>
   </div>
-
+  <div class="cart-summary">
+    <h2>Cart Summary</h2>
+    <p>Total Quantity: <span id="totalQuantity">0</span></p>
+    <p>Total Amount: ₹<span id="totalAmount">0.00</span></p>
+    <button id="payment">Proceed To Pay</button>
+  </div>
+</div>
+ 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="./script/cart.js"></script>
+
 </body>
 </html>

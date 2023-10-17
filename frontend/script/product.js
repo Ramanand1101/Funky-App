@@ -57,60 +57,17 @@
 //       })
 //       .catch((err) => console.log("Error fetching data:", err));
 //   }
-//   priceSort.addEventListener("change",(e)=>{
-//     if(e.target.value=="lth"){
-//         let newData=cloth.sort((a,b)=>a.price-b.price);
-//         getCards(newData);
-//     }else if(e.target.value=="htl"){
-//         let newData=entrees.sort((a,b)=>b.price-a.price);
-//         getCards(newData);
-//     }else if(e.target.value=="sort"){
-//         getCards(fetched);
-//     }
-// });
 
-
-//   function displayProducts(acctualData){
-//     productsContainer.innerHTML = "";
-//     acctualData.forEach(elem => {
-//         const div=document.createElement("div")
-//         div.classList.add('products')
-
-//         let image=document.createElement("img")
-//         image.setAttribute("src", elem.image)
-//         image.setAttribute("class", "p-image")
-
-//         let name=document.createElement("p")
-//         name.innerText=elem.name
-
-//         let desc=document.createElement("p")
-//         desc.innerText=elem.description
-
-//         let cat=document.createElement("p")
-//         cat.innerText=elem.category
-
-//         let price=document.createElement("p")
-//         price.innerText=elem.price
-
-//         let rating=document.createElement("p")
-//         rating.innerText=elem.rating
-
-//         let size=document.createElement("p")
-//         size.innerText=elem.size
-
-//         div.append(image,name,price,desc,cat,size,rating)
-//         productsContainer.append(div)
-
-//     });
-//   }
 
 
 const url = "http://localhost:3000";
 const productsContainer = document.querySelector(".product-card");
 const categoryFilter = document.getElementById("categoryFilter");
 const priceSort = document.getElementById("priceSort");
+let cartCount=document.querySelector(".cartCount")
 let fetched = [];
 let cloth = [];
+
 
 // Function to fetch data from the server
 function getData() {
@@ -145,7 +102,6 @@ priceSort.addEventListener("change", (e) => {
     getCards(fetched);
   }
 });
-
 // Function to render products in the UI
 function getCards(data) {
   productsContainer.innerHTML = "";
@@ -167,7 +123,7 @@ function getCards(data) {
     cat.innerText = elem.category;
 
     let price = document.createElement("h4");
-    price.innerText = elem.price;
+   price.innerText=`Price: ₹ ${elem.price}`;
 
     let rating = document.createElement("h4");
     rating.innerText = elem.rating;
@@ -177,62 +133,40 @@ function getCards(data) {
 
     let btn = document.createElement("button");
     btn.innerText = "Add To Cart";
-    btn.addEventListener("click", () => {
-      addToCart(elem._id);
-       // Assuming elem._id represents the product ID
-    });
-
-    div.append(image, name, price, desc, cat, size, rating, btn);
-    productsContainer.append(div);
-  });
-}
-
-// Function to add product to the cart
-async function addToCart(productId, quantity = 1) {
-  try {
-      const response = await fetch(`${url}/cart/add`, {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json",
-              Authorization: JSON.parse(localStorage.getItem("token")),
-          },
-          body: JSON.stringify({ productId, quantity }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-          if (data.message === "Product already in the cart") {
-              Swal.fire({
-                  title: 'Error!',
-                  text: 'This product is already in your cart.',
-                  icon: 'error'
-              });
-          } else {
-              Swal.fire({
-                  title: 'Success!',
-                  text: 'Item has been added to your cart successfully!',
-                  icon: 'success'
-              });
+    btn.addEventListener("click", (e) => {
+      // preventDefault()
+      e.preventDefault()
+      // document.querySelector('#cart-count').textContent = count
+      
+      let count = parseInt(localStorage.getItem('cart-count')) || 0;
+      cartCount.innerText = count;
+     
+      let cartData = JSON.parse(localStorage.getItem("cart-products")) || []
+      isAlreadyInCart = false;
+      for (let i = 0; i<cartData.length; i++) {
+          if (cartData[i]._id === elem._id) {
+              isAlreadyInCart = true;
+              break;
           }
-      } else {
-          Swal.fire({
-              title: 'Error!',
-              text: data.error || 'An error occurred while processing your request.',
-              icon: 'error'
-          });
       }
-  } catch (error) {
-      console.error('Error:', error);
-      Swal.fire({
-          title: 'Error!',
-          text: 'An error occurred while processing your request.',
-          icon: 'error'
-      });
-  }
+      if (isAlreadyInCart === true) {
+        
+        swal.fire("Oops!", "This product is already in the cart", "error");
+      } else {
+        count++
+          cartData.push(elem )
+          cartCount.innerText = count;
+          localStorage.setItem("cart-count",count)
+          localStorage.setItem("cart-products", JSON.stringify(cartData))
+          swal.fire("Success!", "Your Product is added to the cart", "success");
+      }
+    })
+
+
+  div.append(image, name, price, desc, cat, size, rating, btn);
+  productsContainer.append(div);
+});
 }
-
-
 
 
 // Event listener for category filter change
