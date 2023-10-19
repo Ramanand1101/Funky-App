@@ -133,6 +133,7 @@ function getCards(data) {
 
     let btn = document.createElement("button");
     btn.innerText = "Add To Cart";
+    btn.className="addTocart";
     btn.addEventListener("click", (e) => {
       // preventDefault()
       e.preventDefault()
@@ -186,11 +187,3 @@ const cartIcon = document.getElementById('cart-icon');
 const logo = document.querySelector('.logo');
 
 // Add a click event listener to the user icon
-cartIcon.addEventListener('click', function() {
-    // Redirect the user to login.html when the user icon is clicked
-    window.location.href = './cart.html';
-});
-logo.addEventListener('click', function() {
-  // Redirect the user to login.html when the user icon is clicked
-  window.location.href = './index.html';
-});

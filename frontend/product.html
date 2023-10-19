@@ -6,36 +6,161 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product App</title>
     <link rel="stylesheet" href="./Style/product.css">
-     <link rel="stylesheet" href="./Style/index.css" />
-    
+    <link rel="stylesheet" href="./Style/index.css" />
+    <link rel="stylesheet" href="./Style/nav.css">
+    <link rel="stylesheet" href="./Style/font-awesome.css">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=FontName&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="logo">
-            <img src="./image/logo.png" alt="Logo">
+    <header class="header">
+        <div class="hcontainer">
+            <div class="row v-center">
+                <div class="header-item item-left">
+                    <div class="logo">
+                        <a href="#">funky</a>
+                    </div>
+                </div>
+                <!-- menu start here -->
+                <div class="header-item item-center">
+                    <div class="menu-overlay">
+                    </div>
+                    <nav class="menu">
+                        <div class="mobile-menu-head">
+                            <div class="go-back"><i class="fa fa-angle-left"></i></div>
+                            <div class="current-menu-title"></div>
+                            <div class="mobile-menu-close">&times;</div>
+                        </div>
+                        <ul class="menu-main">
+                            <li>
+                                <a href="#">Home</a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">Shirt<i class="fa fa-angle-down"></i></a>
+                                <div class="sub-menu mega-menu mega-menu-column-4">
+                                    <div class="list-item text-center">
+                                        <a href="./product.html">
+                                            <img src="https://5.imimg.com/data5/XO/AE/MY-39077357/mens-check-shirts.jpg"
+                                                alt="shirt 1">
+                                            <h4 class="title">Shirt 25% OFF</h4>
+                                        </a>
+                                    </div>
+                                    <div class="list-item text-center">
+                                        <a href="./product.html">
+                                            <img src="https://www.beyoung.in/api/cache/catalog/products/new_shirt_upload_21_10_2022/deep_olive_green_corduroy_shirt_for_men_base_3_11_2022_700x933.jpg"
+                                                alt="new Product">
+                                            <h4 class="title">New collection Start from @299</h4>
+                                        </a>
+                                    </div>
+                                    <div class="list-item text-center">
+                                        <a href="./product.html">
+                                            <img src="https://media.gq.com/photos/61ef317bea362c0f8b862d81/1:1/w_1125,h_1125,c_limit/012422-shirts-for-men-lead.jpg"
+                                                alt="new Product">
+                                            <h4 class="title">Amazing Shirt discount 50%</h4>
+                                        </a>
+                                    </div>
+                                    <div class="list-item text-center">
+                                        <a href="./product.html">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDIbTlamFtG7GXmos93hCOwz7GAc-WKwc64w&usqp=CAU"
+                                                alt="new Product">
+                                            <h4 class="title">Buy Casual Shirts for Men Online in India </h4>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">Shop <i class="fa fa-angle-down"></i></a>
+                                <div class="sub-menu mega-menu mega-menu-column-4">
+                                    <div class="list-item">
+                                        <h4 class="title">Men's Fashion</h4>
+                                        <ul>
+                                            <li><a href="#">T-Shirts</a></li>
+                                            <li><a href="#"> Casual Shirts</a></li>
+                                            <li><a href="#">Casual Shirts</a></li>
+                                            <li><a href="#"> Formal Shirts</a></li>
+                                            <li><a href="#">Sweatshirts</a></li>
+                                            <li><a href="#"> Jackets</a></li>
+                                            <li><a href="#"> Blazers & Coats</a></li>
+                                            <li><a href="#">Suits</a></li>
+                                            <li><a href="#">Rain Jackets</a></li>
+                                            <li> <a href="">
+                                                    <h3>Collection of 50% off</h3>
+                                                </a></li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="list-item">
+                                        <h4 class="title">Women's Fashion </h4>
+                                        <ul>
+                                            <li><a href="#"> Kurtas & Suits</a></li>
+                                            <li><a href="#"> Kurtis, Tunics & Tops</a></li>
+                                            <li><a href="#"> Sarees</a></li>
+                                            <li><a href="#"> Ethnic Wear</a></li>
+                                            <li><a href="#">Leggings, Salwars & Churidars</a></li>
+                                            <li><a href="#"> Skirts & Palazzos</a></li>
+                                            <li><a href="#"> Dress Materials</a></li>
+                                            <li><a href="#">Lehenga Cholis</a></li>
+                                            <li><a href="#">Dupattas & Shawls</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="list-item">
+                                        <h4 class="title">Sports & Active Wear</h4>
+                                        <ul>
+                                            <li><a href="#">Sports Shoes</a></li>
+                                            <li><a href="#">Sports Sandals</a></li>
+                                            <li><a href="#"> Active T-Shirts</a></li>
+                                            <li><a href="#">Track Pants & Shorts</a></li>
+                                            <li><a href="#">Tracksuits</a></li>
+                                            <li><a href="#">Jackets & Sweatshirts</a></li>
+                                            <li><a href="#"> Sports Accessories</a></li>
+                                            <li><a href="#"> Swimwear</a></li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="list-item">
+                                        <img src="https://img.freepik.com/free-photo/portrait-smiling-beautiful-girl-her-handsome-boyfriend-laughing-happy-cheerful-couple-sunglasses_158538-4997.jpg"
+                                            alt="shop">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">Blog <i class="fas fa-angle-down"></i></a>
+                                <div class="sub-menu single-column-menu">
+                                    <ul>
+                                        <li><a href="#">Standard Layout</a></li>
+                                        <li><a href="#">Grid Layout</a></li>
+                                        <li><a href="#">single Post Layout</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#">Contact</a>
+                            </li>
+                            <input id="search" type="text" placeholder="search">
+                        </ul>
+                    </nav>
+                </div>
+                <!-- menu end here -->
+                <div class="header-item item-right">
+
+
+                    <a href="#"><i class="far fa-heart"></i></a>
+                    <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="./login.html"><i class="fa-solid fa-user"></i></a>
+                    <!-- mobile menu trigger -->
+                    <div class="mobile-menu-trigger">
+                        <span></span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="menu">
-            <a href="#">Men</a>
-            <a href="#">Women</a>
-        </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Search..." />
-        </div>
-        <div class="icons">
-            <i class="fas fa-heart"></i>
-           
-            <i id="cart-icon" class="fas fa-shopping-cart"><span class="cartCount">0</span></i>
-            
-            <i class="fas fa-user"></i>
-        </div>
-    </nav>
+    </header>
     <div class="container">
         <div class="filters">
             <!-- Filter and Sort Options Here (e.g., dropdowns, checkboxes) -->
-           
+
             <label class="uppercase">Filter by Category:</label>
             <select id="categoryFilter">
                 <option value="all">All</option>
@@ -56,14 +181,49 @@
 
         <div class="products-container" id="productsContainer">
             <div class="product-card">
-                
+
             </div>
             <!-- Product Cards will be dynamically added here -->
         </div>
     </div>
-    <script src="./script/product.js"></script>
-<script src="https://kit.fontawesome.com/a0a226fd5d.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <footer class="footer">
+        <div class="fcontainer">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h2>About Us</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.</p>
+                </div>
+                <div class="footer-section links">
+                    <h2>Quick Links</h2>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact">
+                    <h2>Contact Us</h2>
+                    <p>Email: info@example.com</p>
+                    <p>Phone: +1 234 567 890</p>
+                </div>
+                <div class="footer-section social">
+                    <h2>Follow Us</h2>
+                    <div class="social-icons">
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 </body>
 
 </html>
+<script src="./script/product.js"></script>
+<script src="https://kit.fontawesome.com/a0a226fd5d.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="./script/nav.js"></script>
