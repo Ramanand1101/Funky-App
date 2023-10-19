@@ -4,7 +4,13 @@ let totalQuantityElement = document.getElementById("totalQuantity");
 let totalAmountElement = document.getElementById("totalAmount");
 let cartShow = document.querySelector(".cartCount");
 let cartCount = parseInt(localStorage.getItem("cart-count")) || 0;
+
+// let tAmount=localStorage.getItem("cart-amount")||0
+// parseInt(tAmount)
+
+
 let cart = JSON.parse(localStorage.getItem("cart-products")) || [];
+
 let payment=document.getElementById("payment")
 document.addEventListener("DOMContentLoaded", function() {
     payment.addEventListener("click", (e) => {
@@ -18,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
 
 
 function displayData(data) {
@@ -57,6 +64,7 @@ function displayData(data) {
 
         let addButton = document.createElement("button");
         addButton.innerText = "+";
+        addButton.className="qnty"
         addButton.addEventListener("click", (e) => {
             e.preventDefault()
             // Increase the quantity when the + button is clicked
@@ -70,6 +78,7 @@ function displayData(data) {
 
         let minusButton = document.createElement("button");
         minusButton.innerText = "-";
+        minusButton.className="qnty"
         minusButton.addEventListener("click", (e) => {
             e.preventDefault()
             
@@ -78,14 +87,14 @@ function displayData(data) {
             quantityDisplay.innerText = elem.quantity;
             updateCart();
         });
+
         let btn=document.createElement("button");
         btn.innerText="Delete";
-        btn.setAttribute("class","btn");
+        btn.setAttribute("class","dlt");
         btn.addEventListener("click", function(e) {
             e.preventDefault();
             const deletedQuantity = elem.quantity || 1;
             cart.splice(ind, 1);
-            
             localStorage.setItem("cart-products", JSON.stringify(cart));
             displayData(cart);
             updateCart(deletedQuantity); // Pass the deleted quantity to updateCart function
@@ -96,8 +105,10 @@ function displayData(data) {
         cartProducts.appendChild(div);
 
         totalQuant += elem.quantity || 1; // Add the quantity of the current product to totalQuant
-        totalCost += (elem.quantity || 1) * elem.price; // Add the cost of the current product to totalCost
+        totalCost += (elem.quantity || 1) * elem.price; 
+        // Add the cost of the current product to totalCost
     });
+    localStorage.setItem("cart-amount", totalCost);
 
     totalQuantityElement.innerText = totalQuant;
     totalAmountElement.innerText = totalCost.toFixed(2);
@@ -113,19 +124,25 @@ function updateCart() {
     cart.forEach(product => {
         totalQuant += product.quantity || 1;
         totalCost += (product.quantity || 1) * product.price;
+       
     });
 
     totalQuantityElement.innerText = totalQuant;
     totalAmountElement.innerText = totalCost.toFixed(2);
-
+   
     cartCount = totalQuant;
     cartShow.innerText = cartCount;
-
     localStorage.setItem("cart-count", totalQuant);
     localStorage.setItem("cart-products", JSON.stringify(cart));
-    quantityDisplays.forEach((quantityDisplay, index) => {
-        quantityDisplay.innerText = cart[index].quantity || 1;
-    });
+    // quantityDisplays.forEach((quantityDisplay, index) => {
+    //     quantityDisplay.innerText = cart[index].quantity || 1;
+    // });
 }
 
 displayData(cart);
+let logo=document.querySelector(".logo")
+
+
+logo.addEventListener("click",()=>{
+    window.location.href="index.html"
+})

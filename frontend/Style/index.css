@@ -3,70 +3,17 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    line-height: 1.5;
 }
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    color: #333;
-    padding: 30px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-.fas{
-    cursor: pointer;
-}
-
-.logo {
-    padding-left: 30px;
-    height:50px;
-    cursor:pointer;
-    width:150px
-}
-
-.menu a {
-    color: #333;;
-    text-decoration: none;
-    margin: 0 15px;
-}
-.search-bar{
-    border: 2px solid #333;
-    border-radius: 10px;
-}
-.search-bar input {
-    padding: 8px;
-    border: none;
-    border-radius: 10px;
-}
-.icons{
-    padding-right:30px;
-}
-.icons i {
-    margin-left: 20px;
-    font-size: 20px;
-}
-
-/* Assuming you are using Font Awesome for icons */
-.fa-heart:before {
-    content: "\f004";
-}
-
-.fa-shopping-cart:before {
-    content: "\f07a";
-}
-
-.fa-user:before {
-    content: "\f007";
+*{
+    margin: 0;
+    box-sizing: border-box;
 }
 
 
-/* Styles for the slider container */
 .slider-container {
     position: relative;
+    border: 1px solid black;
     width: 100%;
     overflow: hidden;
     margin-top: 20px; /* Add margin-top of 10 pixels */
@@ -230,8 +177,8 @@ img {
     }
     .image-box,
     .text-box {
-        width: 100%;
-        float: none;
+        float: left;
+        width: 10%;
         margin-bottom: 20px;
     }
 }
@@ -243,7 +190,7 @@ img {
     padding: 40px 0;
 }
 
-.container {
+.fcontainer {
     display: flex;
     justify-content: space-around;
 }
@@ -301,3 +248,148 @@ img {
 }
 
 
+@media (max-width: 992px) {
+    .content-container {
+        width: 90%;
+    }
+
+    .image-box,
+    .text-box {
+        width: 100%;
+        float: none;
+        margin-bottom: 20px;
+    }
+
+    .banner-content {
+        transform: translate(-10%, -50%);
+    }
+
+    .footer-content{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+     }
+     .social{
+        margin-left: 45%;
+        display: flex;
+        justify-content: center;
+       
+     }
+     .social-icons{
+        display: flex;
+        flex-direction: row;
+     }
+
+    .text {
+        font-size: 20px;
+    }
+
+    .footer-section {
+        width: 100%;
+        text-align: center;
+    }
+
+    .social-icons {
+        margin-top: 20px;
+    }
+}
+@media (max-width: 576px) {
+    .content-container {
+        width: 90%;
+    }
+
+    .image-box,
+    .text-box {
+        width: 100%;
+        float: none;
+        margin-bottom: 10px;
+    }
+
+    .banner-content {
+        transform: translate(-10%, -50%);
+    }
+
+
+    .text {
+        font-size: 18px;
+    }
+
+    .footer-content{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+     }
+     .social{
+        margin-left: 45%;
+        display: flex;
+        justify-content: center;
+       
+     }
+     .social-icons{
+        display: flex;
+        flex-direction: row;
+     }
+
+    .text {
+        font-size: 20px;
+    }
+
+    .footer-section {
+        width: 100%;
+        text-align: center;
+    }
+
+    .social-icons {
+        margin-top: 20px;
+    }
+}
+/* Inside the existing media query for medium screens */
+@media (max-width: 992px) {
+    .slider {
+        flex: 0 0 calc(100% - 30px);
+        margin: 0 10px;
+    }
+
+    .slide {
+        flex: 0 0 calc(100% -10px);
+        margin-right: 0;
+    }
+}
+
+.fcontainer{
+    display: flex;
+    flex-direction: row;
+}
+.footer-content{
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid white;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+
+/* Inside the existing media query for small screens */
+@media (max-width: 576px) {
+    .slider {
+        flex: 0 0 calc(100% - 20px);
+        margin: 0 10px;
+    }
+
+    .slide {
+        flex: 0 0 calc(100% - 20px);
+        margin-right: 0;
+    }
+}
+
+    .footer-section {
+        width: 100%;
+        text-align: center;
+    }
+
+    .social-icons {
+        margin-top: 20px;
+    }
