@@ -183,7 +183,11 @@ categoryFilter.addEventListener("change", () => {
 // Initial fetch data function call
 getData();
 
-const cartIcon = document.getElementById('cart-icon');
+let cartIcon = document.getElementById('cartIcon');
+cartIcon.addEventListener("click",()=>{
+  window.location.href="./cart.html"
+})
+
 const logo = document.querySelector('.logo');
 
 // Add a click event listener to the user icon
